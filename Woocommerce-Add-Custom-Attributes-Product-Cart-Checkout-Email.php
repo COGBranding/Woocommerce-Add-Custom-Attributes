@@ -1,5 +1,5 @@
 <?php
-//Add Input Select Fields on Meal Boxes
+//Add Input Select Fields
 function woo_display_custom_fields() {
     
     //create data array
@@ -19,7 +19,7 @@ function woo_display_custom_fields() {
     //get access to global product object
     global $product;
 
-    //check that the product is one of the meal boxes
+    //check that the product is one of the required
 	if ( $product->get_id() === 14851 || 14911 ) {
 
     ?>
@@ -62,12 +62,12 @@ add_action( 'woocommerce_before_variations_form', 'woo_display_custom_fields' );
 
 function add_custom_meta_to_cart_item( $cart_item_data, $product_id, $variation_id ) {
     //create a variable with the selected option field
-	$mealbox_option_one = filter_input( INPUT_POST, 'mealbox_option_1' );
+    $mealbox_option_one = filter_input( INPUT_POST, 'mealbox_option_1' );
     $mealbox_option_two = filter_input( INPUT_POST, 'mealbox_option_2' );
     $mealbox_option_three = filter_input( INPUT_POST, 'mealbox_option_3' );
 
     //create a new meta property on the cart_item_data
-	$cart_item_data['mealbox_option_1'] = $mealbox_option_one;
+    $cart_item_data['mealbox_option_1'] = $mealbox_option_one;
     $cart_item_data['mealbox_option_2'] = $mealbox_option_two;
     $cart_item_data['mealbox_option_3'] = $mealbox_option_three;
 
