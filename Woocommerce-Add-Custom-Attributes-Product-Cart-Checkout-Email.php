@@ -4,29 +4,54 @@ function woo_display_custom_fields() {
     
     //create data array
     $data = [
-        "one" => 1,
-        "two" => 2, 
-        "three" => 3,
-        "four" => 4,
-        "five" => 5,
-        "six" => 6,
-        "seven" => 7,
-        "eight" => 8,
-        "nine" => 9,
-        "ten" => 10
+        "Zero" => 0,
+        "One" => 1,
+        "Two" => 2, 
+        "Three" => 3,
+        "Four" => 4,
+        "Five" => 5,
+        "Six" => 6,
+        "Seven" => 7,
+        "Eight" => 8,
+        "Nine" => 9,
+        "Ten" => 10
     ];
+
+    $data_two = [
+      "Zero" => 0,
+      "One" => 1,
+      "Two" => 2, 
+      "Three" => 3,
+      "Four" => 4,
+      "Five" => 5,
+      "Six" => 6,
+      "Seven" => 7,
+      "Eight" => 8,
+      "Nine" => 9,
+      "Ten" => 10,
+      "Eleven" => 11,
+      "Twelve" => 12,
+      "Thirteen" => 13,
+      "Fourteen" => 14,
+      "Fifteen" => 15,
+      "Sixteen" => 16,
+      "Seventeen" => 17,
+      "Eighteen" => 18,
+      "Nineteen" => 19,
+      "Twenty" => 20,
+  ];
 
     //get access to global product object
     global $product;
 
-    //check that the product is one of the required
-	if ( $product->get_id() === 14851 || 14911 ) {
+    //check that the product is one of the meal boxes
+	if ( $product->get_id() === 14851) {
 
     ?>
     <div id="mealboxes-form">
     <div class="mealboxes">
         <label for="mealbox-option1">Protein 1: Australian Grass-Fed Beef + Barley Grass</label>
-        <select name="mealbox_option_1" id="mealbox_option_1" required>
+        <select class="mealbox_dropdown" name="mealbox_option_1" id="mealbox_option_1" required>
             <option selected disabled>Choose an amount</option>
             <?php foreach ($data as $key => $value ) { ?>
             <option value="<?php echo $value; ?>"><?php echo "$key" ?></option>
@@ -36,7 +61,7 @@ function woo_display_custom_fields() {
 
     <div class="mealboxes">
         <label for="mealbox-option2">Protein 2: Australian Chicken + Chia Seeds</label>
-        <select name="mealbox_option_2" id="mealbox_option_2" required>
+        <select class="mealbox_dropdown" name="mealbox_option_2" id="mealbox_option_2" required>
             <option selected disabled>Choose an amount</option>
             <?php foreach ($data as $key => $value ) { ?>
             <option value="<?php echo $value; ?>"><?php echo "$key" ?></option>
@@ -46,7 +71,7 @@ function woo_display_custom_fields() {
 
     <div class="mealboxes">
         <label for="mealbox-option3">Protein 3: Australian Wild Kangaroo + Sea Kelp</label>
-        <select name="mealbox_option_3" id="mealbox_option_3" required>
+        <select class="mealbox_dropdown" name="mealbox_option_3" id="mealbox_option_3" required>
             <option selected disabled>Choose an amount</option>
             <?php foreach ($data as $key => $value ) { ?>
             <option value="<?php echo $value; ?>"><?php echo "$key" ?></option>
@@ -57,6 +82,44 @@ function woo_display_custom_fields() {
     
     <?php
     } 
+
+   else if ( $product->get_id() === 14911 ) {
+
+        ?>
+        <div id="mealboxes-form">
+        <div class="mealboxes">
+            <label for="mealbox-option1_10kg">Protein 1: Australian Grass-Fed Beef + Barley Grass</label>
+            <select class="mealbox_dropdown_10kg" name="mealbox_option_1" id="mealbox_option_1_10kg" required>
+                <option selected disabled>Choose an amount</option>
+                <?php foreach ($data_two as $key => $value ) { ?>
+                <option value="<?php echo $value; ?>"><?php echo "$key" ?></option>
+                <?php } ?>
+            </select>
+        </div>
+    
+        <div class="mealboxes">
+            <label for="mealbox-option2_10kg">Protein 2: Australian Chicken + Chia Seeds</label>
+            <select class="mealbox_dropdown_10kg" name="mealbox_option_2" id="mealbox_option_2_10kg" required>
+                <option selected disabled>Choose an amount</option>
+                <?php foreach ($data_two as $key => $value ) { ?>
+                <option value="<?php echo $value; ?>"><?php echo "$key" ?></option>
+                <?php } ?>
+            </select>
+        </div>
+    
+        <div class="mealboxes">
+            <label for="mealbox-option3_10kg">Protein 3: Australian Wild Kangaroo + Sea Kelp</label>
+            <select class="mealbox_dropdown_10kg" name="mealbox_option_3" id="mealbox_option_3_10kg" required>
+                <option selected disabled>Choose an amount</option>
+                <?php foreach ($data_two as $key => $value ) { ?>
+                <option value="<?php echo $value; ?>"><?php echo "$key" ?></option>
+                <?php } ?>
+            </select>
+        </div>
+        </div>
+        
+        <?php
+        } 
 };
 add_action( 'woocommerce_before_variations_form', 'woo_display_custom_fields' );
 
